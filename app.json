@@ -12,6 +12,7 @@
     "description": "timer watchface",
     "icon": "images/preview.png"
   },
+  "permissions": [],
   "runtime": {
     "apiVersion": {
       "compatible": "1.0.0",
