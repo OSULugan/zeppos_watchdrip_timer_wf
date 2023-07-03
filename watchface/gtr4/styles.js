@@ -231,6 +231,14 @@ export const BG_STALE_IMG = {
     show_level: hmUI.show_level.ONLY_NORMAL
 };
 
+export const LOGO_IMG = {
+    x: px(189),
+    y: px(322),
+    src: 'images/logo/logo_128x128.png',
+    visible: true,
+    show_level: hmUI.show_level.ONAL_AOD
+};
+
 // Xdrip modified to put ExternalStatusService.getLastStatusLine()
 export const AAPS_TEXT = {
     x: px(24),

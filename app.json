@@ -1,8 +1,8 @@
 {
   "configVersion": "v2",
   "app": {
-    "appId": 28964,
-    "appName": "Watchdrip WF Custom with Second Indicator",
+    "appId": 28965,
+    "appName": "Watchdrip WF Custom with Second Indicator and Logo",
     "appType": "watchface",
     "version": {
       "code": 1,

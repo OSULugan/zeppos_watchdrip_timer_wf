@@ -23,6 +23,7 @@ import {
     DIGITAL_TIME_AOD,
     IMG_LOADING_PROGRESS,
     IMG_STATUS_BT_DISCONNECTED,
+    LOGO_IMG,    
     PHONE_BATTERY_TEXT,
     WATCH_BATTERY_TEXT,
     AAPS_TEXT,
@@ -224,7 +225,10 @@ WatchFace({
             
             const digitalClock = hmUI.createWidget(hmUI.widget.IMG_TIME, mergeStyles(DIGITAL_TIME, DIGITAL_TIME_AOD));
             
-            const secondsPointer = hmUI.createWidget(hmUI.widget.TIME_POINTER, mergeStyles(ANALOG_TIME_SECONDS, ANALOG_TIME_SECONDS_AOD));            
+            const secondsPointer = hmUI.createWidget(hmUI.widget.TIME_POINTER, mergeStyles(ANALOG_TIME_SECONDS, ANALOG_TIME_SECONDS_AOD));
+
+            const imgLogo = hmUI.createWidget(hmUI.widget.IMG, LOGO_IMG);
+          
         } else {
             const imgBg = hmUI.createWidget(hmUI.widget.IMG, BG_IMG);
 
