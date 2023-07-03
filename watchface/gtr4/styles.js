@@ -86,6 +86,22 @@ export const DIGITAL_TIME_AOD = {
     show_level: hmUI.show_level.ONAL_AOD
 };
 
+export const ANALOG_TIME_SECONDS = {
+    second_centerX: px(240),
+    second_centerY: px(240),
+    second_posX: px(6),
+    second_posY: px(232),
+    second_path: img("point/sec.png")
+};
+
+export const ANALOG_TIME_SECONDS_AOD = {
+    second_centerX: px(240),
+    second_centerY: px(240),
+    second_posX: px(6),
+    second_posY: px(232),
+    second_path: img("point/sec_aod.png")
+};
+
 const dateX = px(226);
 const dateY = px(115);
 const dateFontWidth = 16; // widest image in font array
@@ -196,6 +212,15 @@ export const BG_TREND_IMAGE = {
     w: px(55),
     h: px(52),
     show_level: hmUI.show_level.ONLY_NORMAL
+};
+
+export const BG_TREND_IMAGE_AOD = {
+    src: 'watchdrip/arrows/None.png',
+    x: px(373),
+    y: px(214),
+    w: px(57),
+    h: px(53),
+    show_level: hmUI.show_level.ONAL_AOD
 };
 
 export const BG_STALE_IMG = {

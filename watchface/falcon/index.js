@@ -4,6 +4,8 @@ import {Watchdrip} from "../../utils/watchdrip/watchdrip-mini";
 import {WatchdripData} from "../../utils/watchdrip/watchdrip-data";
 import {getGlobal} from "../../shared/global";
 import {
+    ANALOG_TIME_SECONDS,
+    ANALOG_TIME_SECONDS_AOD,    
     BG_DELTA_TEXT,
     BG_STALE_IMG,
     BG_STATUS_HIGH_IMG,
@@ -11,6 +13,7 @@ import {
     BG_STATUS_OK_IMG,
     BG_TIME_TEXT,
     BG_TREND_IMAGE,
+    BG_TREND_IMAGE_AOD,    
     BG_VALUE_NO_DATA_TEXT,
     BG_VALUE_TEXT_IMG,
     BG_VALUE_TEXT_IMG_AOD,
@@ -92,10 +95,10 @@ import {
 import {BG_IMG, BG_FILL_RECT} from "../../utils/config/styles_global";
 import {PROGRESS_ANGLE_INC, PROGRESS_UPDATE_INTERVAL_MS, TEST_DATA} from "../../utils/config/constants";
 
-let bgValNoDataTextWidget, bgValTextImgWidget, bgValTimeTextWidget, bgDeltaTextWidget, bgTrendImageWidget, bgStaleLine, 
+let bgValNoDataTextWidget, bgValTextImgWidget, bgValTimeTextWidget, bgDeltaTextWidget, bgTrendImageWidget, bgTrendImageWidgetAOD, bgStaleLine, 
     phoneBattery, watchBattery, bgStatusLow, bgStatusOk, bgStatusHigh, progress, editGroupAAPSxDrip, aapsText, aapsTimeText;
 
-let batterySensor;
+let batterySensor, secondsPointer, secondsPointerAOD;
 
 let globalNS, progressTimer, progressAngle, screenType;
 
@@ -220,10 +223,14 @@ WatchFace({
             const imgBg = hmUI.createWidget(hmUI.widget.FILL_RECT, BG_FILL_RECT);
             
             const digitalClock = hmUI.createWidget(hmUI.widget.IMG_TIME, mergeStyles(DIGITAL_TIME, DIGITAL_TIME_AOD));
+            
+            const secondsPointer = hmUI.createWidget(hmUI.widget.TIME_POINTER, mergeStyles(ANALOG_TIME_SECONDS, ANALOG_TIME_SECONDS_AOD));            
         } else {
             const imgBg = hmUI.createWidget(hmUI.widget.IMG, BG_IMG);
 
             const digitalClock = hmUI.createWidget(hmUI.widget.IMG_TIME, DIGITAL_TIME);
+
+            const secondsPointer = hmUI.createWidget(hmUI.widget.TIME_POINTER, ANALOG_TIME_SECONDS);            
         };
 
         const daysImg = hmUI.createWidget(hmUI.widget.IMG_WEEK, WEEK_DAYS_IMG);
@@ -274,6 +281,7 @@ WatchFace({
         bgValTimeTextWidget = hmUI.createWidget(hmUI.widget.TEXT, BG_TIME_TEXT);
         bgDeltaTextWidget = hmUI.createWidget(hmUI.widget.TEXT, BG_DELTA_TEXT);
         bgTrendImageWidget = hmUI.createWidget(hmUI.widget.IMG, BG_TREND_IMAGE);
+        bgTrendImageWidgetAOD = hmUI.createWidget(hmUI.widget.IMG, BG_TREND_IMAGE_AOD);        
         bgStaleLine = hmUI.createWidget(hmUI.widget.IMG, BG_STALE_IMG);
         phoneBattery = hmUI.createWidget(hmUI.widget.TEXT, PHONE_BATTERY_TEXT);
         bgStatusLow = hmUI.createWidget(hmUI.widget.IMG, BG_STATUS_LOW_IMG);
@@ -329,6 +337,8 @@ WatchFace({
         bgDeltaTextWidget.setProperty(hmUI.prop.TEXT, bgObj.delta);
 
         bgTrendImageWidget.setProperty(hmUI.prop.SRC, bgObj.getArrowResource());
+
+        bgTrendImageWidgetAOD.setProperty(hmUI.prop.SRC, bgObj.getArrowResource());
 
         phoneBattery.setProperty(hmUI.prop.TEXT, watchdripData.getStatus().getBatVal());
 
